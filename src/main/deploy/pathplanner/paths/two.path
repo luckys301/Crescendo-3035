@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.0,
-        "y": 0.0
+        "x": 2.8598500563620233,
+        "y": 5.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.0,
-        "y": 0.0
+        "x": 1.8527181134248136,
+        "y": 5.511710836545781
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.0,
-        "y": 0.0
+        "x": 1.5,
+        "y": 5.5
       },
       "prevControl": {
-        "x": 4.109668295948286,
-        "y": 0.0
+        "x": 2.7530595103986215,
+        "y": 5.488289163454219
       },
       "nextControl": null,
       "isLocked": false,
@@ -43,7 +43,10 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "TuningPaths",
-  "previewStartingState": null,
+  "folder": "onePlusFour",
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
   "useDefaultConstraints": true
 }

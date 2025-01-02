@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.0,
-        "y": 0.0
+        "x": 1.5013930170513679,
+        "y": 5.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.0,
-        "y": 0.0
+        "x": 1.044670391765889,
+        "y": 7.8813929953109545
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.0,
-        "y": 0.0
+        "x": 7.95406395377698,
+        "y": 7.448092043117039
       },
       "prevControl": {
-        "x": 4.109668295948286,
-        "y": 0.0
+        "x": 5.764137519715837,
+        "y": 7.3544053507507865
       },
       "nextControl": null,
       "isLocked": false,
@@ -43,7 +43,10 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "TuningPaths",
-  "previewStartingState": null,
+  "folder": "onePlusFour",
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
   "useDefaultConstraints": true
 }

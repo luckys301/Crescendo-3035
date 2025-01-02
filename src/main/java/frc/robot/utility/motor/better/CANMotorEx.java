@@ -5,7 +5,6 @@ import frc.robot.utility.shuffleboard.ShuffleboardValue;
 
 public abstract class CANMotorEx {
     // protected int deviceID; // specific and should not be in the abstract class
-    // TODO: which fields should be final?
     protected Direction direction;
     protected ZeroPowerMode idleMode;
     protected double positionConversionFactor;
@@ -50,9 +49,9 @@ public abstract class CANMotorEx {
             return new IsEnabledBuilder();
         }
     }
+
     public class IsEnabledBuilder {
-        @SuppressWarnings("unchecked")
-        public <T extends CANMotorEx> T withIsEnabled(boolean isEnabled) {
+        public SupplyCurrentBuilder withIsEnabled(boolean isEnabled) {
             isEnabledWriter = ShuffleboardValue
                 .create(isEnabled, motorID + "/Is Enabled", subSystemName)
                 .withWidget(BuiltInWidgets.kToggleSwitch)
@@ -60,7 +59,7 @@ public abstract class CANMotorEx {
             outputWriter = ShuffleboardValue
                 .create(0.0, motorID +"/Output", subSystemName)
                 .build();
-            return (T) CANMotorEx.this;
+            return new SupplyCurrentBuilder();
 
         }
     }
@@ -73,13 +72,19 @@ public abstract class CANMotorEx {
     //     }
     // }
     
-    @SuppressWarnings("unchecked")
-    public <T extends CANMotorEx> T withSupplyCurrentLimit(double currentLimit) {
-        setSupplyCurrentLimit(currentLimit);
-        return (T) CANMotorEx.this;
+    public class SupplyCurrentBuilder {
+        @SuppressWarnings("unchecked")
+        public <T extends CANMotorEx> T withSupplyCurrentLimit(double currentLimit) {
+            setSupplyCurrentLimit(currentLimit);
+            return (T) CANMotorEx.this;
+        }
     }
 
-    
+    public TalonEx withStatorCurrentLimit(double statorCurrent){
+        setStatorCurrentLimit(statorCurrent);
+        return (TalonEx) this;
+    }
+
     protected abstract void setDirection(Direction direction);
     protected abstract void setIdleMode(ZeroPowerMode mode);
     protected void setPositionConversionFactor(double positionConversionFactor){
@@ -89,6 +94,7 @@ public abstract class CANMotorEx {
         this.velocityConversionFactor=velocityConversionFactor;
     };
     protected abstract void setSupplyCurrentLimit(double currentLimit);
+    protected abstract void setStatorCurrentLimit(double currentLimit);
     protected void setIsEnabled(boolean isEnabled){
         this.isEnabledWriter.set(isEnabled);
     };
@@ -103,4 +109,5 @@ public abstract class CANMotorEx {
     public void stop() {
         setPower(0);
     }
+    
 }
