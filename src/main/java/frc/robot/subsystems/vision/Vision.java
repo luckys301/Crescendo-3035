@@ -1,5 +1,7 @@
 package frc.robot.subsystems.vision;
 
+import java.util.Optional;
+
 import edu.wpi.first.apriltag.AprilTagDetection;
 import edu.wpi.first.apriltag.AprilTagDetector;
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
@@ -11,6 +13,8 @@ import edu.wpi.first.cscore.HttpCamera;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.net.PortForwarder;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.utility.shuffleboard.ShuffleboardValue;
@@ -64,6 +68,25 @@ public class Vision extends SubsystemBase {
         for (int port = 5800; port <= 5809; port++) {
             PortForwarder.add(port, "limelight.local", port);
         }
+
+        // Optional<Alliance> ally = DriverStation.getAlliance();
+        // if (ally.isPresent()) {
+        //     if (ally.get() == Alliance.Red) {
+        //         Constants.VisionConstants.SpeakerID = 4;
+        //         Constants.VisionConstants.farSpeakerID = 1;
+        //         Constants.VisionConstants.AmpID = 5;
+        //         Constants.side = "red";
+        //     }
+        //     if (ally.get() == Alliance.Blue) {
+        //         Constants.VisionConstants.SpeakerID = 7;
+        //         Constants.VisionConstants.farSpeakerID = 2;
+        //         Constants.VisionConstants.AmpID = 6;
+        //         Constants.side = "blue";
+        //     }
+        // }
+
+        // visionAlert = new Alert("Limelight is not connected! Vision will be hindered!", Alert.AlertType.WARNING);
+
     }
 
     @Override
@@ -95,6 +118,7 @@ public class Vision extends SubsystemBase {
         return tYWriter.get();
     }
     //tv Whether the limelight has any valid targets (0 or 1)
+    //isConnected
     public boolean gettV(){
         return tVWriter.get();
     }
